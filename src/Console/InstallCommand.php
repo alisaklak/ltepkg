@@ -40,19 +40,29 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        
-        $this->requireComposerPackages('laravel/ui:^3.3');
+
+        $kit = $this->choice(
+            'Admin Ui kurulumu?',
+            ['Hayır', 'Evet'],
+            0
+        );
+        if ($kit === "Hayır") {
+            $this->requireComposerPackages('laravel/ui:^3.3');
             shell_exec('php artisan ui bootstrap --auth');
-            file_put_contents(
-                base_path('routes/web.php'),
-                file_get_contents(__DIR__ . '/../../resources/stubs/routes.stub'),
-                FILE_APPEND
-            );
+        }
 
 
-            // (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/controllers', app_path('Http/Controllers/'));
-            // (new Filesystem)->ensureDirectoryExists(resource_path('views'));
-            // (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views', resource_path('views/'));
+
+        file_put_contents(
+            base_path('routes/web.php'),
+            file_get_contents(__DIR__ . '/../../resources/stubs/routes.stub'),
+            FILE_APPEND
+        );
+
+
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/controllers', app_path('Http/Controllers/'));
+        (new Filesystem)->ensureDirectoryExists(resource_path('views'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views', resource_path('views/'));
 
     }
 
@@ -76,6 +86,4 @@ class InstallCommand extends Command
                 $this->output->write($output);
             });
     }
-
-
 }
