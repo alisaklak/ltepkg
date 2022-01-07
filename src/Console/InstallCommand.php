@@ -63,6 +63,10 @@ class InstallCommand extends Command
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/controllers', app_path('Http/Controllers/'));
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views', resource_path('views/'));
+        (new Filesystem)->ensureDirectoryExists(public_path('dist'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/public/dist', resource_path('dist/'));
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/public/plugins', resource_path('plugins/'));
 
     }
 
