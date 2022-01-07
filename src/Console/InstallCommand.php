@@ -70,7 +70,8 @@ class InstallCommand extends Command
         (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/jquery'), public_path('plugins/jquery/'));
         (new Filesystem)->ensureDirectoryExists(public_path('plugins/bootstrap'));
         (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/bootstrap'), public_path('plugins/bootstrap/'));
-
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins/fontawesome-free'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/fontawesome-free'), public_path('plugins/fontawesome-free/'));
 
     }
 
