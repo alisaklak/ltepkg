@@ -97,13 +97,18 @@
       </div>
     </li> --}}
 
-
+    <li class="nav-item">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <i class="fas fa-expand-arrows-alt"></i>
+      </a>
+    </li>
 
 
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="far fa-user"></i> {{ auth()->user()->name}}
+        <span class="d-none d-md-block"> <i class="far fa-user"></i>  {{ auth()->user()->name}}</span>
+        <span class="d-block d-md-none"> <i class="far fa-user"></i></span>
         {{-- <span class="badge badge-warning navbar-badge">15</span> --}}
       </a>
       <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
@@ -121,11 +126,7 @@
         </form>
       </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-        <i class="fas fa-expand-arrows-alt"></i>
-      </a>
-    </li>
+    
     {{-- <li class="nav-item">
       <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
         <i class="fas fa-th-large"></i>
