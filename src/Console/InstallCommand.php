@@ -50,6 +50,7 @@ class InstallCommand extends Command
             $this->requireComposerPackages('laravel/ui:^3.3');
             shell_exec('php artisan ui bootstrap --auth');
         }
+        $this->requireComposerPackages('almasaeed2010/adminlte:^3.1');
 
 
 
@@ -64,9 +65,12 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views', resource_path('views/'));
         (new Filesystem)->ensureDirectoryExists(public_path('dist'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/public/dist', resource_path('dist/'));
-        (new Filesystem)->ensureDirectoryExists(public_path('plugins'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/public/plugins', resource_path('plugins/'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/dist'), public_path('dist/'));
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins/jquery'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/jquery'), public_path('plugins/jquery/'));
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins/bootstrap'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/bootstrap'), public_path('plugins/bootstrap/'));
+
 
     }
 
