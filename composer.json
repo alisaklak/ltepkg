@@ -1,0 +1,26 @@
+{
+    "name": "alisaklak/ltepkg",
+    "description": "ltepkg",
+    "type": "library",
+    "require": {},
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "alisaklak",
+            "email": "alisaklak@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Alisaklak\\Ltepkg\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alisaklak\\Ltepkg\\LtepkgServiceProvider"
+            ]
+        }
+    }
+}
