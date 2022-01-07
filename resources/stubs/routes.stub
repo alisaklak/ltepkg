@@ -1,2 +1,10 @@
 
-////test copy
+////ltepkg route ****
+
+
+Auth::routes();
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name('user.profile');
+});

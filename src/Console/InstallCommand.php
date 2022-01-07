@@ -48,6 +48,12 @@ class InstallCommand extends Command
                 file_get_contents(__DIR__ . '/../../resources/stubs/routes.stub'),
                 FILE_APPEND
             );
+
+
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/controllers', app_path('Http/Controllers/'));
+            (new Filesystem)->ensureDirectoryExists(resource_path('views'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views', resource_path('views/'));
+
     }
 
 
