@@ -66,6 +66,9 @@ class InstallCommand extends Command
 
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/controllers', app_path('Http/Controllers/'));
 
+
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/database', base_path('database/'));
+
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views', resource_path('views/'));
 
@@ -77,7 +80,6 @@ class InstallCommand extends Command
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/Livewire', app_path('Http/Livewire/'));
         
         
-
         (new Filesystem)->copy(__DIR__ . '/../../resources/stubs/config/simple.php', base_path('config/'));
 
         //plugins
