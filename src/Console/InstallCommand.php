@@ -80,7 +80,7 @@ class InstallCommand extends Command
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/Livewire', app_path('Http/Livewire/'));
         
         
-        (new Filesystem)->copy(__DIR__ . '/../../resources/stubs/config/simple.php', base_path('config/'));
+        (new Filesystem)->copy(__DIR__ . '/../../resources/stubs/config/simple.php', base_path('config/simple.php'));
 
         //plugins
         (new Filesystem)->ensureDirectoryExists(public_path('dist'));
