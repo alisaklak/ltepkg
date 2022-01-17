@@ -66,7 +66,7 @@ class InstallCommand extends Command
 
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/controllers', app_path('Http/Controllers/'));
 
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/Models', app_path('Http/Models/'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/Models', app_path('Models/'));
 
 
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/database', base_path('database/'));
