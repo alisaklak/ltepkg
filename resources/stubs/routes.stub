@@ -7,4 +7,9 @@ Auth::routes();
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name('user.profile');
+    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+
+
+    Route::get('/'.config('simple.prefix_url').'/{model_name}', [App\Http\Controllers\Simple\IndexController::class, 'index']);
 });

@@ -4,7 +4,7 @@
   <a href="{{route('home')}}" class="brand-link">
     <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
       style="opacity: .8">
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <span class="brand-text font-weight-light">HeyKodi</span>
   </a>
 
   <!-- Sidebar -->
@@ -40,7 +40,7 @@
                with font-awesome or any other icon font library -->
 
         <li class="nav-item">
-          <a href="{{route('home')}}" class="nav-link {{request()->is('/')?' active ':''}}">
+          <a href="{{route('home')}}" class="nav-link {{request()->is('/') || request()->is('home')  ?' active ':''}}">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Home
@@ -58,8 +58,8 @@
             </p>
           </a>
         </li> --}}
-
-
+{{-- 
+    {{-- dropdownlink
         <li class="nav-item ">
           <a href="#" class="nav-link ">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -75,6 +75,31 @@
                 <p>Active Page</p>
               </a>
             </li>
+          </ul>
+        </li> --}}
+
+
+        <li class="nav-item {{request()->is(config('simple.prefix_url').'/*') ? 'menu-open' : ''}}" style="margin-top: 100px">
+          <a href="#" class="nav-link ">
+            <i class="nav-icon {{config('simple.menu.icon')}}"></i>
+            <p>
+              {{config("simple.menu.label")}}
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            @forelse (config("simple.models") as $key => $value)
+            <li class="nav-item">
+              <a href="{{url(config('simple.prefix_url').'/'.$key)}}" class="nav-link {{request()->is(config('simple.prefix_url').'/'.$key) ? 'active' : ''}}">
+                <i
+                  class="nav-icon {{isset($value['icon']) && $value['icon'] != '' ? $value['icon'] : 'far fa-circle'}}"></i>
+                <p>{{$value['label'] ?? $key}}</p>
+              </a>
+            </li>
+            @empty
+
+            @endforelse
+
           </ul>
         </li>
 

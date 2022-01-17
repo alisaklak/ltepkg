@@ -51,7 +51,10 @@ class InstallCommand extends Command
             shell_exec('php artisan ui bootstrap --auth');
         }
         $this->requireComposerPackages('almasaeed2010/adminlte:^3.1');
+        $this->requireComposerPackages('spatie/laravel-query-builder');
+        $this->requireComposerPackages('livewire/livewire');
 
+        
 
 
         file_put_contents(
@@ -62,8 +65,22 @@ class InstallCommand extends Command
 
 
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/controllers', app_path('Http/Controllers/'));
+
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views', resource_path('views/'));
+
+        (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests/'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/Requests', app_path('Http/Requests/'));
+
+
+        (new Filesystem)->ensureDirectoryExists(app_path('Http/Livewire/'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/Livewire', app_path('Http/Livewire/'));
+        
+        
+
+        (new Filesystem)->copy(__DIR__ . '/../../resources/stubs/config/simple.php', base_path('config/'));
+
+        //plugins
         (new Filesystem)->ensureDirectoryExists(public_path('dist'));
         (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/dist'), public_path('dist/'));
         (new Filesystem)->ensureDirectoryExists(public_path('plugins/jquery'));
@@ -72,6 +89,29 @@ class InstallCommand extends Command
         (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/bootstrap'), public_path('plugins/bootstrap/'));
         (new Filesystem)->ensureDirectoryExists(public_path('plugins/fontawesome-free'));
         (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/fontawesome-free'), public_path('plugins/fontawesome-free/'));
+
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins/moment'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/moment'), public_path('plugins/moment/'));
+
+
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins/select2'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/select2'), public_path('plugins/select2/'));
+
+
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins/select2-bootstrap4-theme'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/select2-bootstrap4-theme'), public_path('plugins/select2-bootstrap4-theme/'));
+
+
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins/sweetalert2'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/sweetalert2'), public_path('plugins/sweetalert2/'));
+
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins/sweetalert2-theme-bootstrap-4'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/sweetalert2-theme-bootstrap-4'), public_path('plugins/sweetalert2-theme-bootstrap-4/'));
+
+
+        (new Filesystem)->ensureDirectoryExists(public_path('plugins/tempusdominus-bootstrap-4'));
+        (new Filesystem)->copyDirectory(base_path('vendor/almasaeed2010/adminlte/plugins/tempusdominus-bootstrap-4'), public_path('plugins/tempusdominus-bootstrap-4/'));
+        
 
     }
 
